@@ -1,29 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {handleSetAnswer} from '../actions/questions'
-import {  Redirect } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
 class AnswerQuestion  extends Component {
     state = {
-        optionOne:true,
-        toHome:false
+        optionOne:true
     }
     
     handleSubmit = (e)=>{
-        e.preventDefault();
         const { authedUser, qid,dispatch } = this.props
         
         dispatch(handleSetAnswer({
             authedUser,
             qid,
             answer: this.state.optionOne? 'optionOne': 'optionTwo' 
-
-
         }))
-        this.setState(()=>
-        (
-         {   toHome:true}
-        ))
+        
 
     }
     toggle = ()=>{
@@ -33,14 +26,12 @@ class AnswerQuestion  extends Component {
     }
     
     render (){
-        if (this.state.toHome===true){
-        return <Redirect to="/dash_board"/>
-        }
+        
 
         return (<div className='container'>
             <h3>{this.props.name}asks: </h3>
             <h4>Would you rather ...</h4>
-            <div >
+            <div className='container'>
                 <img className='avatar' alt="" src={this.props.avatar}/>
                 <div>
                     <input type="radio" onChange={this.toggle}  checked={this.state.optionOne}  name="optionOne" value="optionOne"/>{this.props.optionOne}
@@ -50,7 +41,15 @@ class AnswerQuestion  extends Component {
                 </div>
                 
                 
-                <button className='btn' type="submit" onClick={this.handleSubmit}>Submit</button>
+                <Link to='/dash_board'  onClick={this.handleSubmit}>
+                
+                <button className='btn'>Submit</button>
+                </Link>
+                
+                
+                
+                
+                
 
                 
                 

@@ -35,7 +35,7 @@ class App extends Component {
                   <Nav />
                   <Route path='/' exact component={SignIn} /> 
                   <Route path='/dash_board' exact component={Dashboard} />
-                  <Route path='/question/:qid' component={QuestionGeneral} />
+                  <Route path='/questions/:qid' component={QuestionGeneral} />
                   <Route path='/add' component={NewQuestion} />
                   <Route path='/leaderboard' component={LeaderBoard} />
                   <Route path='/page404' component={Page404} />

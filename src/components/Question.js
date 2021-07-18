@@ -15,7 +15,7 @@ class Question  extends Component {
                 <p>{text}</p>
                 
                 <Link to={{
-                    pathname:`/question/${qid}`,
+                    pathname:`/questions/${qid}`,
                     state: { isAnswered: viewAnswered }
                     }}>
                 <button className='btn'>View Poll</button>

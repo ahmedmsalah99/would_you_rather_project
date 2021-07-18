@@ -26,10 +26,10 @@ class SignIn extends Component {
         
     }
   render() {
-    console.log(this.state)
+    const {goTo} = this.props
     if (this.state.toHome===true){
-      console.log('yeah')
-        return <Redirect to="/dash_board"/>
+      
+        return <Redirect to={goTo}/>
         }
     const {users,usersIds} = this.props
     return (
@@ -53,10 +53,14 @@ class SignIn extends Component {
   }
 }
 
-function mapStateToProps ({ users }) {
+function mapStateToProps ({ users },props) {
+  
+  const goTo = typeof props.location.state === 'undefined'?"/dash_board":props.location.state.goTo
+  console.log(props)
   return {
     users,
-    usersIds:Object.keys(users)
+    usersIds:Object.keys(users),
+    goTo
   }
 }
 

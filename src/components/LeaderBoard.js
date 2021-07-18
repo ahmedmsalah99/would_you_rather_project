@@ -7,7 +7,10 @@ class LeaderBoard extends Component {
     const {authedUser} = this.props
     if(authedUser===null){
       alert('Please SignIn !')
-      return <Redirect to="/"/>
+      return <Redirect to={{
+        pathname:"/",
+        state: {goTo:'/leaderboard'}
+      }}/>
     }
     const {users,usersIds} = this.props
     
@@ -16,7 +19,7 @@ class LeaderBoard extends Component {
          <ul className="container">
       {usersIds.map(userId =>(
           
-          <li className="leader_board_element">
+          <li key={userId} className="leader_board_element">
             <div className='element-container'>
             <img src={users[userId].avatarURL} alt="" className='avatar'/>
             </div>

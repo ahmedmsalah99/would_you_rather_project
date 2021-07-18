@@ -36,7 +36,10 @@ this.setState(()=>({
     const {authedUser} = this.props
     if(authedUser===null){
       alert('Please SignIn !')
-      return <Redirect to="/"/>
+      return <Redirect to={{
+        pathname:"/",
+        state: {goTo:'/add'}
+      }}/>
     }
     if (this.state.toHome===true){
       return <Redirect to="/dash_board"/>
